@@ -1,0 +1,10 @@
+{
+    "name": "lenovo/ws03",
+    "autoload": {
+        "psr-4": {
+            "Framework\\": "Framework/",
+            "App\\": "App/"
+        }
+    },
+    "require": {}
+}

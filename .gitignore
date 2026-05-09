@@ -1,0 +1,22 @@
+# Local database files
+/mysql-8.4/
+
+# Sensitive data
+.env
+
+# Logs
+*.log
+
+.vscode/
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+/node_modules/
+/config/db.php
+
+/vendor/

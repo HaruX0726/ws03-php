@@ -1,0 +1,241 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+
+:root {
+  --color-header: #1a3a52;
+  /* Header at navigation bar (Dark Steel Blue) */
+  --color-accent: #4481ba;
+  /* "Post a Job" button at mga highlight (Steel Blue) */
+  --color-page-bg: #0f1f2e;
+  /* Background ng buong page (Very Dark Blue) */
+  --color-card-bg: #1a3044;
+  /* Background ng mga card/box (Dark Blue-Gray) */
+  --color-heading: #7aaed6;
+  /* Kulay ng mga title at heading (Lighter Steel Blue) */
+  --color-body-text: #c9dff0;
+  /* Regular na body text (Pale Steel Blue) */
+  --color-link: #4481ba;
+  /* Mga clickable na links (Steel Blue) */
+  --color-tag-bg: #1e3f5c;
+  /* Background ng mga tag/badge (Deep Steel Blue) */
+  --color-tag-text: #a8cfe8;
+  /* Text ng mga tag/badge (Soft Steel Blue) */
+  --color-footer: #0d1c29;
+  /* Footer background (Near Black Blue) */
+  --showcase-overlay: rgba(13, 28, 41, 0.75);
+  /* Hero banner overlay */
+}
+
+
+/* ----------------------------------------------------------------
+   SECTION 2: MGA FONT (Typography)
+   ----------------------------------------------------------------
+   Palitan ng font name na gusto mo.
+   Kung gagamit ng Google Font, i-import muna sa taas ng file.
+
+   Halimbawa ng built-in fonts (hindi na kailangan ng import):
+     'Georgia', serif
+     'Arial', sans-serif
+     'Verdana', sans-serif
+     'Times New Roman', serif
+     'Courier New', monospace
+   ---------------------------------------------------------------- */
+
+:root {
+  --font-heading: 'Poppins', sans-serif;
+  /* Para sa mga title at heading */
+  --font-body: 'Poppins', sans-serif;
+  /* Para sa regular na text */
+}
+
+
+/* ----------------------------------------------------------------
+   SECTION 3: HUGIS AT ESTILO (Shape & Style)
+   ----------------------------------------------------------------
+   --border-radius:
+     0px      = matuwid / sharp corners
+     4px      = konting rounding
+     8px      = medyo rounded
+     16px     = malakas na rounding
+     9999px   = pill shape / fully round
+
+   --card-shadow:
+     none                           = walang shadow
+     0 2px 8px rgba(0,0,0,0.08)    = mahinang shadow
+     0 4px 16px rgba(0,0,0,0.20)   = malakas na shadow
+   ---------------------------------------------------------------- */
+
+:root {
+  --border-radius: 8px;
+  --card-shadow: 0 4px 16px rgba(68, 129, 186, 0.15);
+}
+
+
+
+
+/* ================================================================
+   === HUWAG I-EDIT ANG SECTION NA ITO (unless gusto mong advanced!) ===
+   === Ito ang code na gumagamit ng iyong mga variables sa itaas.  ===
+   ================================================================ */
+
+body {
+  font-family: var(--font-body) !important;
+  background-color: var(--color-page-bg) !important;
+  color: var(--color-body-text) !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading) !important;
+  color: var(--color-heading) !important;
+}
+
+a {
+  color: var(--color-link) !important;
+}
+
+header {
+  background-color: var(--color-header) !important;
+}
+
+.bg-blue-900,
+.bg-blue-800 {
+  background-color: var(--color-header) !important;
+}
+
+.bg-yellow-500 {
+  background-color: var(--color-accent) !important;
+}
+
+.text-yellow-500 {
+  color: var(--color-accent) !important;
+}
+
+.hover\:bg-yellow-600:hover {
+  background-color: var(--color-accent) !important;
+  filter: brightness(0.88);
+}
+
+.bg-blue-500 {
+  background-color: var(--color-accent) !important;
+}
+
+.bg-white {
+  background-color: var(--color-card-bg) !important;
+  border-radius: var(--border-radius) !important;
+  box-shadow: var(--card-shadow) !important;
+  border: 1px solid rgba(68, 129, 186, 0.2) !important;
+}
+
+.bg-indigo-100 {
+  background-color: var(--color-tag-bg) !important;
+}
+
+.text-indigo-700,
+.text-indigo-800 {
+  color: var(--color-tag-text) !important;
+}
+
+.text-blue-700,
+.text-blue-500,
+.text-blue-900 {
+  color: var(--color-link) !important;
+}
+
+.text-white {
+  color: #ffffff !important;
+}
+
+button,
+.rounded,
+.rounded-lg,
+.rounded-full {
+  border-radius: var(--border-radius) !important;
+}
+
+..overlay {
+  background-color: var(--showcase-overlay) !important;
+  pointer-events: none;
+}
+
+footer,
+.bg-indigo-900 {
+  background-color: var(--color-footer) !important;
+  color: #ffffff !important;
+}
+
+footer a,
+footer p,
+footer span,
+footer h1,
+footer h2,
+footer h3,
+footer h4,
+footer h5,
+footer h6 {
+  color: #ffffff !important;
+}
+
+.bg-gray-100 {
+  background-color: var(--color-page-bg) !important;
+}
+
+/* Sticky Footer */
+body {
+  display: flex !important;
+  flex-direction: column !important;
+  min-height: 100vh !important;
+}
+
+body>* {
+  flex-shrink: 0;
+}
+
+body>footer {
+  margin-top: auto !important;
+}
+
+
+/* ----------------------------------------------------------------
+   ADVANCED ZONE — Para sa gustong mag-explore pa!
+   ----------------------------------------------------------------
+   Alisin ang comment tags para i-activate ang isang rule.
+*/
+/* Hover effect sa mga link */
+/* a:hover {
+  text-decoration: underline;
+  opacity: 0.85;
+} */
+
+/* Kulay ng input fields */
+/* input, select, textarea {
+  border-color: var(--color-link) !important;
+  border-radius: var(--border-radius) !important;
+} */
+
+/* ================================================================
+   SPECIFIC UI OVERRIDES
+   ================================================================ */
+
+/* 1. TOP HEADER - Text for logo and navigation links */
+header h1,
+header h1 a,
+header nav a:not(.bg-yellow-500) {
+  color: var(--color-heading) !important;
+}
+
+/* 2. JOB LISTINGS - Background for card details section */
+.bg-gray-100 {
+  background-color: #112236 !important;
+  border: 1px solid rgba(68, 129, 186, 0.25) !important;
+}
+
+/* 3. BOTTOM BANNER - Text for title and description */
+.bg-blue-800 h2,
+.bg-blue-800 p {
+  color: var(--color-body-text) !important;
+}

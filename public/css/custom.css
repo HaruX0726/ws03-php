@@ -26,21 +26,6 @@
   /* Hero banner overlay */
 }
 
-
-/* ----------------------------------------------------------------
-   SECTION 2: MGA FONT (Typography)
-   ----------------------------------------------------------------
-   Palitan ng font name na gusto mo.
-   Kung gagamit ng Google Font, i-import muna sa taas ng file.
-
-   Halimbawa ng built-in fonts (hindi na kailangan ng import):
-     'Georgia', serif
-     'Arial', sans-serif
-     'Verdana', sans-serif
-     'Times New Roman', serif
-     'Courier New', monospace
-   ---------------------------------------------------------------- */
-
 :root {
   --font-heading: 'Poppins', sans-serif;
   /* Para sa mga title at heading */
@@ -49,34 +34,10 @@
 }
 
 
-/* ----------------------------------------------------------------
-   SECTION 3: HUGIS AT ESTILO (Shape & Style)
-   ----------------------------------------------------------------
-   --border-radius:
-     0px      = matuwid / sharp corners
-     4px      = konting rounding
-     8px      = medyo rounded
-     16px     = malakas na rounding
-     9999px   = pill shape / fully round
-
-   --card-shadow:
-     none                           = walang shadow
-     0 2px 8px rgba(0,0,0,0.08)    = mahinang shadow
-     0 4px 16px rgba(0,0,0,0.20)   = malakas na shadow
-   ---------------------------------------------------------------- */
-
 :root {
   --border-radius: 8px;
   --card-shadow: 0 4px 16px rgba(68, 129, 186, 0.15);
 }
-
-
-
-
-/* ================================================================
-   === HUWAG I-EDIT ANG SECTION NA ITO (unless gusto mong advanced!) ===
-   === Ito ang code na gumagamit ng iyong mga variables sa itaas.  ===
-   ================================================================ */
 
 body {
   font-family: var(--font-body) !important;
@@ -157,7 +118,7 @@ button,
   border-radius: var(--border-radius) !important;
 }
 
-..overlay {
+.overlay {
   background-color: var(--showcase-overlay) !important;
   pointer-events: none;
 }
@@ -198,28 +159,6 @@ body>* {
 body>footer {
   margin-top: auto !important;
 }
-
-
-/* ----------------------------------------------------------------
-   ADVANCED ZONE — Para sa gustong mag-explore pa!
-   ----------------------------------------------------------------
-   Alisin ang comment tags para i-activate ang isang rule.
-*/
-/* Hover effect sa mga link */
-/* a:hover {
-  text-decoration: underline;
-  opacity: 0.85;
-} */
-
-/* Kulay ng input fields */
-/* input, select, textarea {
-  border-color: var(--color-link) !important;
-  border-radius: var(--border-radius) !important;
-} */
-
-/* ================================================================
-   SPECIFIC UI OVERRIDES
-   ================================================================ */
 
 /* 1. TOP HEADER - Text for logo and navigation links */
 header h1,

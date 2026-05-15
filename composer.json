@@ -1,5 +1,12 @@
 {
-    "name": "lenovo/ws03",
+    "name": "HaruX0726/ws03-php",
+    "description": "Job seeker application",
+    "author": [
+        {
+            "name": "Haru",
+            "email": "jacobcapague11@gmail.com"
+        }
+    ],
     "autoload": {
         "psr-4": {
             "Framework\\": "Framework/",

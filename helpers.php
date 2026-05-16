@@ -25,6 +25,7 @@ function loadPartial($partial, array $data = [])
     $partialPath = basePath('App/views/partials/' . $partial . '.php');
 
     if (file_exists($partialPath)) {
+        extract($data);
         require $partialPath;
     } else {
         echo "Partial {$partial} not found";

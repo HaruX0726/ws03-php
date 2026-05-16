@@ -14,9 +14,7 @@
             <div class="bg-red-500 text-white font-semibold p-4 mb-6 rounded-lg shadow border-l-4 border-red-700">
                 <p class="font-bold mb-2">✖ Please fix the following errors:</p>
                 <ul class="list-disc list-inside space-y-1">
-                    <?php foreach ($errors as $error) : ?>
-                        <li><?= $error ?></li>
-                    <?php endforeach; ?>
+                    <?= loadPartial('errors', ['errors' => $errors ?? []]) ?>
                 </ul>
             </div>
         <?php endif; ?>

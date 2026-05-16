@@ -4,6 +4,7 @@
 
 <section>
     <div class="container mx-auto p-4 mt-4">
+        <?php loadPartial('message'); ?>
         <div class="flex justify-between items-center mb-4">
             <a href="/listings" class="text-blue-500 hover:underline">
                 <i class="fa fa-arrow-left"></i> Back To Listings

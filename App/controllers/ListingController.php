@@ -193,7 +193,23 @@ class ListingController {
             exit;
         } else {
             //submit to db
-            \inspectAndDie('Success');
+            $updateFields = [];
+
+            foreach(array_keys($updateValues) as $field) {
+                $updateFields[] = "{$field} = :{$field}";
+            }
+
+            $updateFields = implode(', ', $updateFields);
+
+            $updateQuery = "UPDATE listings SET {$updateFields} WHERE id = :id";
+
+            $updateValues['id'] = $id;
+
+            $this->db->query($updateQuery, $updateValues);
+
+            $_SESSION['success_message'] = 'Listing updated successfully';
+
+            redirect('/listings/' . $id);
         }
 
     } 

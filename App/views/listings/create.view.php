@@ -10,18 +10,23 @@
         <!-- Job Title -->
         <div class="mb-4">
             <label for="title" class="block text-lg font-semibold mb-2">Job Title</label>
-            <?php if (isset($errors)) : ?>
-                <?php foreach($errors as $error) : ?>
-                    <div class="message bg-blue-100 my-3 p-3 rounded"><?= $error ?></div>
-                <?php endforeach; ?>
-            <?php endif; ?>
+        <?php if (!empty($errors)) : ?>
+            <div class="bg-red-500 text-white font-semibold p-4 mb-6 rounded-lg shadow border-l-4 border-red-700">
+                <p class="font-bold mb-2">✖ Please fix the following errors:</p>
+                <ul class="list-disc list-inside space-y-1">
+                    <?php foreach ($errors as $error) : ?>
+                        <li><?= $error ?></li>
+                    <?php endforeach; ?>
+                </ul>
+            </div>
+        <?php endif; ?>
             <input
                 type="text"
                 id="title"
                 name="title"
                 placeholder="Job Title"
                 value="<?= htmlspecialchars($_POST['title'] ?? '') ?>"
-                class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500 text-white" value="<?= $listing['title'] ?? '' ?>" />
+                class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500 text-white" value="<?= $listing->title ?? '' ?>" />
 
         </div>
 
@@ -33,7 +38,7 @@
                 name="description"
                 rows="4"
                 placeholder="Job Description"
-                class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500 text-white"><?= htmlspecialchars($_POST['description'] ?? '') ?><?= $listing['description'] ?? '' ?></textarea>
+                class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500 text-white"><?= $listing->description ?? '' ?></textarea>
         </div>
 
         <!-- Salary -->
@@ -45,7 +50,7 @@
                 name="salary"
                 placeholder="Annual Salary"
                 value="<?= htmlspecialchars($_POST['salary'] ?? '') ?>"
-                class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500 text-white" value="<?= $listing['salary']?? '' ?>" />
+                class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500 text-white" value="<?= $listing->salary ?? '' ?>" />
         </div>
 
         <!-- Requirements -->
@@ -57,7 +62,7 @@
                 name="requirements"
                 placeholder="Requirements"
                 value="<?= htmlspecialchars($_POST['requirements'] ?? '') ?>"
-                class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500 text-white" value="<?= $listing['requirements']?? '' ?>" />
+                class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500 text-white" value="<?= $listing->requirements ?? '' ?>" />
         </div>
 
         <!-- Benefits -->
@@ -69,7 +74,7 @@
                 name="benefits"
                 placeholder="Benefits"
                 value="<?= htmlspecialchars($_POST['benefits'] ?? '') ?>"
-                class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500 text-white" value="<?= $listing['benefits']?? '' ?>" />
+                class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500 text-white" value="<?= $listing->benefits ?? '' ?>" />
         </div>
         <div class="mb-6">
             <label for="benefits" class="block text-lg font-semibold mb-2">Tags</label>
@@ -79,7 +84,7 @@
                 name="tags"
                 placeholder="Tags"
                 value="<?= htmlspecialchars($_POST['tags'] ?? '') ?>"
-                class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500 text-white" value="<?= $listing['tags']?? '' ?>" />
+                class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500 text-white" value="<?= $listing->tags ?? '' ?>" />
         </div>
 
         <!-- Section Heading -->
@@ -94,7 +99,7 @@
                 name="company"
                 placeholder="Company Name"
                 value="<?= htmlspecialchars($_POST['company'] ?? '') ?>"
-                class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500 text-white" value="<?= $listing['company']?? '' ?>" />
+                class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500 text-white" value="<?= $listing->company ?? '' ?>" />
         </div>
 
         <!-- Address -->
@@ -106,7 +111,7 @@
                 name="address"
                 placeholder="Address"
                 value="<?= htmlspecialchars($_POST['address'] ?? '') ?>"
-                class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500 text-white" value="<?= $listing['address']?? '' ?>" />
+                class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500 text-white" value="<?= $listing->address ?? '' ?>" />
         </div>
 
         <!-- City -->
@@ -118,7 +123,7 @@
                 name="city"
                 placeholder="City"
                 value="<?= htmlspecialchars($_POST['city'] ?? '') ?>"
-                class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500 text-white" value="<?= $listing['city']?? '' ?>" />
+                class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500 text-white" value="<?= $listing->city ?? '' ?>" />
         </div>
 
         <!-- State -->
@@ -130,7 +135,7 @@
                 name="state"
                 placeholder="State"
                 value="<?= htmlspecialchars($_POST['state'] ?? '') ?>"
-                class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500 text-white" value="<?= $listing['state']?? '' ?>" />
+                class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500 text-white" value="<?= $listing->state?? '' ?>" />
         </div>
 
         <!-- Phone -->
@@ -142,7 +147,7 @@
                 name="phone"
                 placeholder="Phone"
                 value="<?= htmlspecialchars($_POST['phone'] ?? '') ?>"
-                class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500 text-white" value="<?= $listing['phone']?? '' ?>" />
+                class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500 text-white" value="<?= $listing->phone?? '' ?>" />
         </div>
 
         <!-- Email -->
@@ -154,7 +159,7 @@
                 name="email"
                 placeholder="Email Address For Applications"
                 value="<?= htmlspecialchars($_POST['email'] ?? '') ?>"
-                class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500 text-white" value="<?= $listing['email']?? '' ?>" />
+                class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500 text-white" value="<?= $listing->email ?? '' ?>" />
         </div>
 
         <!-- Buttons -->

@@ -9,7 +9,7 @@
                 <i class="fa fa-arrow-left"></i> Back To Listings
             </a>
             <div class="flex gap-2">
-                <a href="/listings/edit?id=<?= $listing->id ?>"
+                <a href="/listings/edit/<?= $listing->id ?>"
                     class="px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded">
                     Edit
                 </a>

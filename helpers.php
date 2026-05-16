@@ -54,9 +54,31 @@ function formatSalary($salary)
  * @param mixed $value
  * @return void
  */
-function inspect($value)
+function inspectAndDie($value)
 {
     echo '<pre style="background:#1a3044;color:#c9dff0;padding:16px;border:1px solid rgba(68,129,186,0.4);border-radius:8px;font-size:13px;overflow:auto;margin:16px;">';
     var_dump($value);
     echo '</pre>';
+}
+
+/**
+ * Sanitize Data 
+ * 
+ * @param string $dirty
+ * @return string
+ */
+function sanitize($dirty) {
+    return filter_var(trim($dirty), FILTER_SANITIZE_SPECIAL_CHARS
+);
+}
+
+/**
+ * Redirect to a given url
+ * 
+ * @param string $url
+ * @return void
+ */
+function redirect($url) {
+    header("Location: {$url}");
+    exit;
 }

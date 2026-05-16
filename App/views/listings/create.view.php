@@ -2,127 +2,175 @@
 <?php loadPartial('navbar'); ?>
 <section class="container mx-auto p-4 mt-8 mb-8 max-w-2xl">
     <h2 class="text-4xl font-bold mb-8">Create Job Listing</h2>
-    
-    <form method="POST" class="bg-white rounded-lg shadow-md p-8 border border-gray-700">
-        <!-- Job Title -->
-        <div class="mb-6">
-            <label for="title" class="block text-lg font-semibold mb-2">Job Title</label>
-            <input 
-                type="text" 
-                id="title" 
-                name="title" 
-                placeholder="e.g., Senior Software Engineer"
-                class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500 text-white"
-                required>
-        </div>
 
-        <!-- Company Name -->
-        <div class="mb-6">
-            <label for="company" class="block text-lg font-semibold mb-2">Company Name</label>
-            <input 
-                type="text" 
-                id="company" 
-                name="company" 
-                placeholder="Your Company"
-                class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500 text-white"
-                required>
+    <form method="POST" action="/listings" class="bg-white rounded-lg shadow-md p-8 border border-gray-700">
+        <!-- Job Info Heading -->
+        <h2 class="text-2xl font-bold mb-6 text-center">Job Info</h2>
+
+        <!-- Job Title -->
+        <div class="mb-4">
+            <label for="title" class="block text-lg font-semibold mb-2">Job Title</label>
+            <?php if (isset($errors)) : ?>
+                <?php foreach($errors as $error) : ?>
+                    <div class="message bg-blue-100 my-3 p-3 rounded"><?= $error ?></div>
+                <?php endforeach; ?>
+            <?php endif; ?>
+            <input
+                type="text"
+                id="title"
+                name="title"
+                placeholder="Job Title"
+                value="<?= htmlspecialchars($_POST['title'] ?? '') ?>"
+                class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500 text-white" value="<?= $listing['title'] ?? '' ?>" />
+
         </div>
 
         <!-- Description -->
-        <div class="mb-6">
+        <div class="mb-4">
             <label for="description" class="block text-lg font-semibold mb-2">Job Description</label>
-            <textarea 
-                id="description" 
-                name="description" 
-                rows="6"
-                placeholder="Describe the job responsibilities, requirements, and benefits..."
-                class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500 text-white"
-                required></textarea>
+            <textarea
+                id="description"
+                name="description"
+                rows="4"
+                placeholder="Job Description"
+                class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500 text-white"><?= htmlspecialchars($_POST['description'] ?? '') ?><?= $listing['description'] ?? '' ?></textarea>
         </div>
 
         <!-- Salary -->
-        <div class="mb-6">
-            <label for="salary" class="block text-lg font-semibold mb-2">Salary</label>
-            <input 
-                type="text" 
-                id="salary" 
-                name="salary" 
-                placeholder="e.g., $50,000 - $80,000"
-                class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500 text-white"
-                required>
+        <div class="mb-4">
+            <label for="salary" class="block text-lg font-semibold mb-2">Annual Salary</label>
+            <input
+                type="text"
+                id="salary"
+                name="salary"
+                placeholder="Annual Salary"
+                value="<?= htmlspecialchars($_POST['salary'] ?? '') ?>"
+                class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500 text-white" value="<?= $listing['salary']?? '' ?>" />
         </div>
 
-        <!-- Location -->
-        <div class="mb-6">
-            <label for="location" class="block text-lg font-semibold mb-2">Location</label>
-            <input 
-                type="text" 
-                id="location" 
-                name="location" 
-                placeholder="e.g., New York, NY"
-                class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500 text-white"
-                required>
+        <!-- Requirements -->
+        <div class="mb-4">
+            <label for="requirements" class="block text-lg font-semibold mb-2">Requirements</label>
+            <input
+                type="text"
+                id="requirements"
+                name="requirements"
+                placeholder="Requirements"
+                value="<?= htmlspecialchars($_POST['requirements'] ?? '') ?>"
+                class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500 text-white" value="<?= $listing['requirements']?? '' ?>" />
         </div>
 
-        <!-- Tags/Skills -->
+        <!-- Benefits -->
         <div class="mb-6">
-            <label for="tags" class="block text-lg font-semibold mb-2">Tags/Skills</label>
-            <input 
-                type="text" 
-                id="tags" 
-                name="tags" 
-                placeholder="e.g., PHP, Laravel, JavaScript (comma separated)"
-                class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500 text-white"
-                required>
+            <label for="benefits" class="block text-lg font-semibold mb-2">Benefits</label>
+            <input
+                type="text"
+                id="benefits"
+                name="benefits"
+                placeholder="Benefits"
+                value="<?= htmlspecialchars($_POST['benefits'] ?? '') ?>"
+                class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500 text-white" value="<?= $listing['benefits']?? '' ?>" />
+        </div>
+        <div class="mb-6">
+            <label for="benefits" class="block text-lg font-semibold mb-2">Tags</label>
+            <input
+                type="text"
+                id="tags"
+                name="tags"
+                placeholder="Tags"
+                value="<?= htmlspecialchars($_POST['tags'] ?? '') ?>"
+                class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500 text-white" value="<?= $listing['tags']?? '' ?>" />
         </div>
 
-        <!-- Type of Employment -->
-        <div class="mb-6">
-            <label for="type" class="block text-lg font-semibold mb-2">Type of Employment</label>
-            <select 
-                id="type" 
-                name="type"
-                class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500 text-white"
-                required>
-                <option value="">Select Type</option>
-                <option value="Full-time">Full-time</option>
-                <option value="Part-time">Part-time</option>
-                <option value="Contract">Contract</option>
-                <option value="Freelance">Freelance</option>
-                <option value="Internship">Internship</option>
-            </select>
+        <!-- Section Heading -->
+        <h3 class="text-2xl font-bold text-center mb-6">Company Info &amp; Location</h3>
+
+        <!-- Company Name -->
+        <div class="mb-4">
+            <label for="company" class="block text-lg font-semibold mb-2">Company Name</label>
+            <input
+                type="text"
+                id="company"
+                name="company"
+                placeholder="Company Name"
+                value="<?= htmlspecialchars($_POST['company'] ?? '') ?>"
+                class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500 text-white" value="<?= $listing['company']?? '' ?>" />
         </div>
 
-        <!-- Work Type -->
+        <!-- Address -->
+        <div class="mb-4">
+            <label for="address" class="block text-lg font-semibold mb-2">Address</label>
+            <input
+                type="text"
+                id="address"
+                name="address"
+                placeholder="Address"
+                value="<?= htmlspecialchars($_POST['address'] ?? '') ?>"
+                class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500 text-white" value="<?= $listing['address']?? '' ?>" />
+        </div>
+
+        <!-- City -->
+        <div class="mb-4">
+            <label for="city" class="block text-lg font-semibold mb-2">City</label>
+            <input
+                type="text"
+                id="city"
+                name="city"
+                placeholder="City"
+                value="<?= htmlspecialchars($_POST['city'] ?? '') ?>"
+                class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500 text-white" value="<?= $listing['city']?? '' ?>" />
+        </div>
+
+        <!-- State -->
+        <div class="mb-4">
+            <label for="state" class="block text-lg font-semibold mb-2">State</label>
+            <input
+                type="text"
+                id="state"
+                name="state"
+                placeholder="State"
+                value="<?= htmlspecialchars($_POST['state'] ?? '') ?>"
+                class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500 text-white" value="<?= $listing['state']?? '' ?>" />
+        </div>
+
+        <!-- Phone -->
+        <div class="mb-4">
+            <label for="phone" class="block text-lg font-semibold mb-2">Phone</label>
+            <input
+                type="text"
+                id="phone"
+                name="phone"
+                placeholder="Phone"
+                value="<?= htmlspecialchars($_POST['phone'] ?? '') ?>"
+                class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500 text-white" value="<?= $listing['phone']?? '' ?>" />
+        </div>
+
+        <!-- Email -->
         <div class="mb-8">
-            <label for="work_type" class="block text-lg font-semibold mb-2">Work Type</label>
-            <select 
-                id="work_type" 
-                name="work_type"
-                class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500 text-white"
-                required>
-                <option value="">Select Work Type</option>
-                <option value="Local">Local</option>
-                <option value="Remote">Remote</option>
-                <option value="Hybrid">Hybrid</option>
-            </select>
+            <label for="email" class="block text-lg font-semibold mb-2">Email Address For Applications</label>
+            <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="Email Address For Applications"
+                value="<?= htmlspecialchars($_POST['email'] ?? '') ?>"
+                class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500 text-white" value="<?= $listing['email']?? '' ?>" />
         </div>
 
-        <!-- Submit Button -->
-        <div class="flex gap-4">
-            <button 
+        <!-- Buttons -->
+        <div class="flex flex-col gap-3">
+            <button
                 type="submit"
-                class="flex-1 px-8 py-3 bg-blue-900 hover:bg-blue-800 text-white font-semibold rounded-lg transition-colors duration-300">
-                <i class="fa fa-check mr-2"></i>Post Listing
+                class="w-full py-3 bg-green-600 hover:bg-green-700 text-white font-semibold rounded-lg transition-colors duration-300">
+                Save
             </button>
-            <a 
+            <a
                 href="/listings"
-                class="flex-1 px-8 py-3 bg-red-600 hover:bg-red-700 text-white font-semibold rounded-lg text-center transition-colors duration-300">
-                <i class="fa fa-times mr-2"></i>Cancel
+                class="w-full py-3 bg-red-600 hover:bg-red-700 text-white font-semibold rounded-lg text-center transition-colors duration-300">
+                Cancel
             </a>
         </div>
+
     </form>
 </section>
-<?php 
-require basePath('views/partials/footer.php');
-?>
+<?php loadPartial('footer'); ?>

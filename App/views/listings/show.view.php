@@ -9,6 +9,7 @@
             <a href="/listings" class="text-blue-500 hover:underline">
                 <i class="fa fa-arrow-left"></i> Back To Listings
             </a>
+            <?php if(Framework\Authorization::isOwner($listing->user_id)): ?>
             <div class="flex gap-2">
                 <a href="/listings/edit/<?= $listing->id ?>"
                     class="px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded">
@@ -22,6 +23,7 @@
                     </button>
                 </form>
             </div>
+            <?php endif; ?>
         </div>
 
         <div class="bg-white rounded-lg shadow-md p-6 mb-6">

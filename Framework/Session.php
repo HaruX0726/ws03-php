@@ -72,7 +72,19 @@ class Session{
      * @param string $message
      * @return void
      */
-    public static function setFlash($key, $message) {
-        $_SESSION['flash'][$key] = $message;
+    public static function setFlashMessage($key, $message) {
+        self::set('flash_' . $key, $message);
+    }
+    /**
+     * Get flash message and unsent
+     * 
+     * @param string $key
+     * @param mixed $default
+     * @return void
+     */
+    public static function getFlashMessage($key, $default = null) {
+        $message = self::get('flash_' . $key, $default);
+        self::clear('flash_' . $key);
+        return $message;
     }
 }

@@ -5,6 +5,7 @@ namespace App\Controllers;
 use Framework\Database;
 use Framework\Validation;
 use Framework\Session;
+use Framework\Authorization;
 
 class ListingController {
 
@@ -102,7 +103,7 @@ class ListingController {
         $query = "INSERT INTO listings ({$fields}) VALUES ({$values})";
 
         $this->db->query($query, $newListingData);
-        
+         Session::setFlashMessage('success_message', 'Listing created successfully');
                 
         redirect('/listings');
         }
@@ -119,18 +120,25 @@ class ListingController {
         $params = [
             'id' => $id
         ];
-
+        //check if listing exist
         $listing = $this->db->query('SELECT * FROM listings WHERE id = :id', $params)->fetch();
-
+        //
         if (!$listing) {
             ErrorController::notFound('Listing not found');
             return;
         }
 
+        //authorization
+        if(!Authorization::isOwner($listing->user_id)){
+            Session::setFlashMessage('error_message', 'You do not have permission to delete this listing');
+            
+            return redirect('/listings/' . $listing->id);
+        }
+
         $this->db->query('DELETE FROM listings WHERE id = :id', $params);
 
         //set flash message
-        $_SESSION['success_message'] = 'Listing deleted successfully';
+       Session::setFlashMessage('success_message', 'Listing deleted successfully');
         
         redirect('/listings');
     }
@@ -208,7 +216,7 @@ class ListingController {
 
             $this->db->query($updateQuery, $updateValues);
 
-            $_SESSION['success_message'] = 'Listing updated successfully';
+            Session::setFlashMessage('success_message', 'Listing updated successfully');
 
             redirect('/listings/' . $id);
         }

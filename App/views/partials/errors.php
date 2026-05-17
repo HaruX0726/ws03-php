@@ -1,6 +1,6 @@
-<?php if (isset($errors)) : ?>
+<?php if (!empty($errors)) : ?>
     <?php foreach ($errors as $error) : ?>
-        <div class="message bg-red-500 text-white p-2 my-3 rounded">
+        <div class="bg-red-100 text-red-600 p-2 my-2 rounded">
             <?= $error ?>
         </div>
     <?php endforeach; ?>

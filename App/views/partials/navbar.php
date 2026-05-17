@@ -7,8 +7,8 @@
             <a href="/">JobSeek</a>
         </h1>
         <nav class="flex items-center gap-4">
-            <?php if (Session::has('user')): ?>
-                <span class="text-white">Welcome, <?= Session::get('user')['name'] ?></span>
+            <?php if (\Framework\Session::has('user')): ?>
+                <span class="text-white">Welcome, <?= \Framework\Session::get('user')['name'] ?></span>
                 
                 <form method="POST" action="/auth/logout" class="contents">
                     <button type="submit" class="text-white hover:underline bg-transparent border-none cursor-pointer p-0 text-base font-normal">Logout</button>

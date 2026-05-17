@@ -7,8 +7,10 @@
                 Post your job listing now and find the perfect candidate.
             </p>
         </div>
+        <?php  if (\Framework\Session::has('user')) : ?>
         <a href="/listings/create" class="bg-white text-[#0F3946] px-5 py-3 rounded shadow transition duration-300">
             <i class="fa fa-edit"></i> Post a Job
         </a>
+        <?php endif; ?>
     </div>
 </section>

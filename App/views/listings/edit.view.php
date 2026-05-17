@@ -1,5 +1,55 @@
 <?php loadPartial('head'); ?>
 <?php loadPartial('navbar'); ?>
+
+<style>
+/* Force button text — inline beats Tailwind CDN */
+button.btn-save, button.btn-save:hover,
+a.btn-cancel, a.btn-cancel:hover, a.btn-cancel:visited {
+    color: #ffffff !important;
+    text-decoration: none !important;
+}
+
+.btn-save {
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(135deg, #10b981, #059669);
+    color: #fff;
+    font-weight: 700;
+    font-size: 1rem;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(16,185,129,0.4);
+    transition: transform 0.18s, box-shadow 0.18s, background 0.2s;
+    letter-spacing: 0.3px;
+}
+.btn-save:hover {
+    background: linear-gradient(135deg, #059669, #047857);
+    box-shadow: 0 6px 20px rgba(16,185,129,0.6);
+    transform: translateY(-2px);
+}
+.btn-cancel {
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+    color: #fff;
+    font-weight: 700;
+    font-size: 1rem;
+    border-radius: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    box-shadow: 0 4px 14px rgba(239,68,68,0.35);
+    transition: transform 0.18s, box-shadow 0.18s, background 0.2s;
+    letter-spacing: 0.3px;
+}
+.btn-cancel:hover {
+    background: linear-gradient(135deg, #dc2626, #b91c1c);
+    box-shadow: 0 6px 20px rgba(239,68,68,0.55);
+    transform: translateY(-2px);
+}
+</style>
+
 <section class="container mx-auto p-4 mt-8 mb-8 max-w-2xl">
     <h2 class="text-4xl font-bold mb-8">Edit Job Listing</h2>
 
@@ -168,14 +218,10 @@
 
         <!-- Buttons -->
         <div class="flex flex-col gap-3">
-            <button
-                type="submit"
-                class="w-full py-3 bg-green-600 hover:bg-green-700 text-white font-semibold rounded-lg transition-colors duration-300">
+            <button type="submit" class="btn-save">
                 Update Listing
             </button>
-            <a
-                href="/listings/<?= $listing->id ?>"
-                class="w-full py-3 bg-red-600 hover:bg-red-700 text-white font-semibold rounded-lg text-center transition-colors duration-300">
+            <a href="/listings/<?= $listing->id ?>" class="btn-cancel">
                 Cancel
             </a>
         </div>

@@ -1,66 +1,54 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
-
+/* ── Design Tokens ──────────────────────────────────────── */
 :root {
-  --color-header: #1a3a52;
-  /* Header at navigation bar (Dark Steel Blue) */
-  --color-accent: #4481ba;
-  /* "Post a Job" button at mga highlight (Steel Blue) */
-  --color-page-bg: #0f1f2e;
-  /* Background ng buong page (Very Dark Blue) */
-  --color-card-bg: #1a3044;
-  /* Background ng mga card/box (Dark Blue-Gray) */
-  --color-heading: #7aaed6;
-  /* Kulay ng mga title at heading (Lighter Steel Blue) */
+  --color-header:    #1a3a52;
+  --color-accent:    #4481ba;
+  --color-page-bg:   #0f1f2e;
+  --color-card-bg:   #1a3044;
+  --color-heading:   #7aaed6;
   --color-body-text: #c9dff0;
-  /* Regular na body text (Pale Steel Blue) */
-  --color-link: #4481ba;
-  /* Mga clickable na links (Steel Blue) */
-  --color-tag-bg: #1e3f5c;
-  /* Background ng mga tag/badge (Deep Steel Blue) */
-  --color-tag-text: #a8cfe8;
-  /* Text ng mga tag/badge (Soft Steel Blue) */
-  --color-footer: #0d1c29;
-  /* Footer background (Near Black Blue) */
+  --color-link:      #4481ba;
+  --color-tag-bg:    #1e3f5c;
+  --color-tag-text:  #a8cfe8;
+  --color-footer:    #0d1c29;
   --showcase-overlay: rgba(13, 28, 41, 0.75);
-  /* Hero banner overlay */
+  --font-heading:    'Poppins', sans-serif;
+  --font-body:       'Poppins', sans-serif;
+  --border-radius:   8px;
+  --card-shadow:     0 4px 16px rgba(68, 129, 186, 0.15);
 }
 
-:root {
-  --font-heading: 'Poppins', sans-serif;
-  /* Para sa mga title at heading */
-  --font-body: 'Poppins', sans-serif;
-  /* Para sa regular na text */
-}
-
-
-:root {
-  --border-radius: 8px;
-  --card-shadow: 0 4px 16px rgba(68, 129, 186, 0.15);
-}
-
+/* ── Base ───────────────────────────────────────────────── */
 body {
   font-family: var(--font-body) !important;
   background-color: var(--color-page-bg) !important;
   color: var(--color-body-text) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  min-height: 100vh !important;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+body > * { flex-shrink: 0; }
+body > footer { margin-top: auto !important; }
+
+h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading) !important;
   color: var(--color-heading) !important;
 }
 
-a {
-  color: var(--color-link) !important;
-}
+/* Global link color — buttons will override below */
+a { color: var(--color-link) !important; }
 
+/* ── Components ─────────────────────────────────────────── */
 header {
   background-color: var(--color-header) !important;
+}
+
+header h1,
+header h1 a,
+header nav a:not(.bg-yellow-500) {
+  color: var(--color-heading) !important;
 }
 
 .bg-blue-900,
@@ -68,22 +56,13 @@ header {
   background-color: var(--color-header) !important;
 }
 
-.bg-yellow-500 {
-  background-color: var(--color-accent) !important;
-}
-
-.text-yellow-500 {
-  color: var(--color-accent) !important;
-}
-
+.bg-yellow-500 { background-color: var(--color-accent) !important; }
+.text-yellow-500 { color: var(--color-accent) !important; }
 .hover\:bg-yellow-600:hover {
   background-color: var(--color-accent) !important;
   filter: brightness(0.88);
 }
-
-.bg-blue-500 {
-  background-color: var(--color-accent) !important;
-}
+.bg-blue-500 { background-color: var(--color-accent) !important; }
 
 .bg-white {
   background-color: var(--color-card-bg) !important;
@@ -92,29 +71,18 @@ header {
   border: 1px solid rgba(68, 129, 186, 0.2) !important;
 }
 
-.bg-indigo-100 {
-  background-color: var(--color-tag-bg) !important;
+/* Card meta background */
+.bg-gray-100 {
+  background-color: #112236 !important;
+  border: 1px solid rgba(68, 129, 186, 0.25) !important;
 }
 
-.text-indigo-700,
-.text-indigo-800 {
-  color: var(--color-tag-text) !important;
-}
+.bg-indigo-100 { background-color: var(--color-tag-bg) !important; }
+.text-indigo-700, .text-indigo-800 { color: var(--color-tag-text) !important; }
+.text-blue-700, .text-blue-500, .text-blue-900 { color: var(--color-link) !important; }
+.text-white { color: #ffffff !important; }
 
-.text-blue-700,
-.text-blue-500,
-.text-blue-900 {
-  color: var(--color-link) !important;
-}
-
-.text-white {
-  color: #ffffff !important;
-}
-
-button,
-.rounded,
-.rounded-lg,
-.rounded-full {
+button, .rounded, .rounded-lg, .rounded-full {
   border-radius: var(--border-radius) !important;
 }
 
@@ -123,58 +91,75 @@ button,
   pointer-events: none;
 }
 
-footer,
-.bg-indigo-900 {
+footer, .bg-indigo-900 {
   background-color: var(--color-footer) !important;
   color: #ffffff !important;
 }
-
-footer a,
-footer p,
-footer span,
-footer h1,
-footer h2,
-footer h3,
-footer h4,
-footer h5,
-footer h6 {
+footer a, footer p, footer span,
+footer h1, footer h2, footer h3,
+footer h4, footer h5, footer h6 {
   color: #ffffff !important;
 }
 
-.bg-gray-100 {
-  background-color: var(--color-page-bg) !important;
-}
-
-/* Sticky Footer */
-body {
-  display: flex !important;
-  flex-direction: column !important;
-  min-height: 100vh !important;
-}
-
-body>* {
-  flex-shrink: 0;
-}
-
-body>footer {
-  margin-top: auto !important;
-}
-
-/* 1. TOP HEADER - Text for logo and navigation links */
-header h1,
-header h1 a,
-header nav a:not(.bg-yellow-500) {
-  color: var(--color-heading) !important;
-}
-
-/* 2. JOB LISTINGS - Background for card details section */
-.bg-gray-100 {
-  background-color: #112236 !important;
-  border: 1px solid rgba(68, 129, 186, 0.25) !important;
-}
-
-/* 3. BOTTOM BANNER - Text for title and description */
 .bg-blue-800 h2,
 .bg-blue-800 p {
   color: var(--color-body-text) !important;
 }
+
+/* ── Readable text inside custom cards ───────────────────── */
+.job-card-title                   { color: #60a5fa !important; }
+.job-card-desc                    { color: #94a3b8 !important; }
+.job-meta li                      { color: #cbd5e1 !important; }
+.job-meta strong                  { color: #e2e8f0 !important; }
+.section-heading                  { color: #e2e8f0 !important; }
+.page-heading                     { color: #e2e8f0 !important; }
+.page-heading span                { color: #60a5fa !important; }
+.detail-card h2, .detail-card h3  { color: #e2e8f0 !important; }
+.detail-card h4                   { color: #60a5fa !important; }
+.detail-card p                    { color: #94a3b8 !important; }
+.meta-list li                     { color: #cbd5e1 !important; }
+.meta-list strong                 { color: #e2e8f0 !important; }
+
+/* ── Navbar elements ─────────────────────────────────────── */
+.welcome-text   { color: #bfdbfe !important; }
+#typed-name     { color: #ffffff !important; }
+.nav-link, .nav-link:hover   { color: #bfdbfe !important; }
+.logout-btn, .logout-btn:hover { color: #fca5a5 !important; }
+.btn-back, .btn-back:hover   { color: #60a5fa !important; }
+
+/* ── BUTTON TEXT — element+class beats global `a` rule ────
+   Specificity: a.btn-details = 0,1,1 (11) > a = 0,0,1 (1)
+   Both have !important, so the HIGHER specificity wins.     */
+
+a.btn-details,
+a.btn-details:hover,
+a.btn-details:visited,
+a.btn-details:focus     { color: #ffffff !important; text-decoration: none !important; }
+
+a.btn-edit,
+a.btn-edit:hover,
+a.btn-edit:visited      { color: #ffffff !important; text-decoration: none !important; }
+
+button.btn-delete,
+button.btn-delete:hover { color: #ffffff !important; }
+
+a.btn-apply,
+a.btn-apply:hover       { color: #ffffff !important; text-decoration: none !important; }
+
+a.btn-show-all,
+a.btn-show-all:hover    { color: #ffffff !important; text-decoration: none !important; }
+
+a.post-job-btn,
+a.post-job-btn:hover    { color: #ffffff !important; text-decoration: none !important; }
+
+a.btn-post-job,
+a.btn-post-job:hover    { color: #ffffff !important; text-decoration: none !important; }
+
+a.btn-cancel,
+a.btn-cancel:hover      { color: #ffffff !important; text-decoration: none !important; }
+
+button.btn-save,
+button.btn-save:hover   { color: #ffffff !important; }
+
+button.btn-search,
+button.btn-search:hover { color: #ffffff !important; }
